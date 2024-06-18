@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import "./index.css"
+import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
+import Card from "./components/Card"
+import earth from "./images/earth.jpg"
+import pinky from "./images/pinky.jpg"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/*
+Challenge:
+
+- import the array of data from data.js
+- map over the array to create <Card /> components
+- display the array of card components under the navbar
+  (in place of the current <Card /> component)
+
+Note: We haven't styled the group of components yet, so they'll
+still be block elements, stacked vertically. We'll add styling later.
+*/
+import data from "./data"
+
+
+export default function App() {
+            // <Hero />
+            //its like looping over an array... so by this way im getting the data from data.js and naming each of them as item... then i get to their property
+            const cards = data.map(item => {
+              return(
+                <Card 
+                  key={item.id}
+                  img={item.coverImg}
+                  rating={item.stats.rating}
+                  reviewCount={item.stats.reviewCount}
+                  location={item.location}
+                  title={item.title}
+                  price={item.price}
+                />
+              )
+            })
+    return (
+        <div>
+            <Navbar />
+            <div className="cards-cont">
+              {cards}
+            </div>
+            
+        </div>
+    )
 }
-
-export default App;
