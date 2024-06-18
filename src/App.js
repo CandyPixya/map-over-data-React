@@ -21,24 +21,20 @@ import data from "./data"
 
 
 export default function App() {
-            // <Hero />
+            // 
             //its like looping over an array... so by this way im getting the data from data.js and naming each of them as item... then i get to their property
             const cards = data.map(item => {
               return(
                 <Card 
                   key={item.id}
-                  img={item.coverImg}
-                  rating={item.stats.rating}
-                  reviewCount={item.stats.reviewCount}
-                  location={item.location}
-                  title={item.title}
-                  price={item.price}
+                  item={item}
                 />
               )
             })
     return (
         <div>
             <Navbar />
+            <Hero />
             <div className="cards-cont">
               {cards}
             </div>
